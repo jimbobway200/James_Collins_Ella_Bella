@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">James_Collins_Ella_Bella</string>
+
+    <string name="title_section1">Contact Info</string>
+    <string name="title_section2">Current Sales</string>
+    <string name="title_section3">Sell to Us</string>
+
+    <!--Contact strings-->
+    <string name="contact_us_intro">There are several ways to reach us!</string>
+    <string name="contact_us_phone">By Phone: </string>
+    <string name="contact_us_email">By Email: </string>
+    <string name="contact_us_phone_detail">360-310-2264</string>
+    <string name="contact_us_email_detail">jimbobway200@gmail.com</string>
+    <string name="contact_us_address">In Store:</string>
+    <string name="contact_us_address_detail">18628 Main St in Conway, WA</string>
+    <string name="contact_us_address_detail2">Click the Google maps button to get directions!</string>
+    <string name="contact_us_facebook">On Facebook:</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
