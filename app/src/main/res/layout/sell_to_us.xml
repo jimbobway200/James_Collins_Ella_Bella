@@ -1,13 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:padding="20dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sell to us"
-        android:padding="5dp"
-        android:textSize="16sp"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/sell_to_us_form_title"
+        android:id="@+id/sell_to_us_form_title"
+        android:orientation="horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There are several ways to sell to us! Either come in to the store, shoot us a message on facebook, or fill out the form below!"
+        android:padding="20dp"/>
+
+    <!--guest name-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Name: "/>
+        <EditText
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/guest_name_edit_text"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+    </LinearLayout>
+
+    <!--Item Description-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Description: "/>
+
+        <EditText
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:id="@+id/item_description"/>
+
+    </LinearLayout>
+
+    <!--Asking Price-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Your Asking Price: "/>
+
+        <EditText
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/asking_price"
+            />
+
+    </LinearLayout>
+
+
+    <!--Take Picture-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Attach a photo: "/>
+
+        <!--Attach a picture-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attach Picture"
+            android:id="@+id/take_picture_button"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/item_photo"
+        android:layout_gravity="center_horizontal" />
+
+    <!--Attach a picture-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit to Ella Bella"
+        android:id="@+id/submit_form"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

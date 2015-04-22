@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">James_Collins_Ella_Bella</string>
+    <string name="app_name">Ella Bella Vintage Finds</string>
 
     <string name="title_section1">Contact Info</string>
     <string name="title_section2">Current Sales</string>
@@ -24,4 +24,5 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+    <string name="sell_to_us_form_title">Sell to Ella Bella</string>
 </resources>
