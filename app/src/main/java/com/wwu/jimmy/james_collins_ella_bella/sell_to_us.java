@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -33,6 +36,8 @@ public class sell_to_us extends Fragment {
 
     private static final int CAMERA_REQUEST = 1888;
     ImageView item_photo;
+    View rootView;
+    File file;
 
     public static sell_to_us newInstance() {
         sell_to_us fragment = new sell_to_us();
@@ -45,7 +50,7 @@ public class sell_to_us extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.sell_to_us, container, false);
+         rootView = inflater.inflate(R.layout.sell_to_us, container, false);
 
         //Take a photo
         Button take_picture_button = (Button) rootView.findViewById(R.id.take_picture_button);
@@ -55,14 +60,44 @@ public class sell_to_us extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+
+                String root = Environment.getExternalStorageDirectory().toString();
+                File myDir = new File(root + "/req_images");
+                myDir.mkdirs();
+                String fname = "Ella-Bella-Temp-Photo.png";
+                file = new File(myDir, fname);
+                if (file.exists())
+                    file.delete();
+
+                //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
 //
-//                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
 
         //Send Email
+        Button submit_form = (Button) rootView.findViewById(R.id.submit_form);
+        submit_form.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                EditText guest_name = (EditText) rootView.findViewById(R.id.guest_name_edit_text);
+                EditText guest_email = (EditText) rootView.findViewById(R.id.guest_email_edit_text);
+                EditText item_description = (EditText) rootView.findViewById(R.id.item_description);
+                EditText asking_price = (EditText) rootView.findViewById(R.id.asking_price);
+
+
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                String emailtext = "Customer Name: " + guest_name.getText().toString() + '\n' + "Customer Email: " + guest_email.getText().toString() + '\n' + "Item Description: " + item_description.getText().toString() + '\n' + "Asking Price: " + asking_price.getText().toString();
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "jimbobway200@gmail.com" }); // going to address
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Sell to Ella Bella"); // subject
+                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file)); //photo
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailtext);
+                startActivity(Intent
+                        .createChooser(emailIntent, "Send mail..."));
+            }
+        });
 
 
         return rootView;
@@ -76,31 +111,45 @@ public class sell_to_us extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-//            File file = temp;
-//            Uri
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            item_photo.setImageBitmap(photo);
 
-            //save bitmap to memory
-            FileOutputStream out = null;
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+
             try {
-                out = new FileOutputStream("temp_photo.png");
-                photo.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
-                // PNG is a lossless format, the compression factor (100) is ignored
-            } catch (Exception e) {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap( getActivity().getContentResolver(),  Uri.fromFile(file));
+                item_photo.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+
                 e.printStackTrace();
-            } finally {
-                try {
-                    if (out != null) {
-                        out.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            } catch (IOException e) {
+
+                e.printStackTrace();
             }
+
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            item_photo.setImageBitmap(photo);
+//            View content = rootView;
+//            content.setDrawingCacheEnabled(true);
+//            File file;
+//            String root = Environment.getExternalStorageDirectory().toString();
+//            File myDir = new File(root + "/req_images");
+//            myDir.mkdirs();
+//            String fname = "Ella-Bella-Temp-Photo.png";
+//            file = new File(myDir, fname);
+//
+//            if (file.exists())
+//                file.delete();
+//            try {
+//                FileOutputStream out = new FileOutputStream(file);
+//                photo.compress(Bitmap.CompressFormat.PNG, 100, out);
+//                out.flush();
+//                out.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
     }
+
+
 }
 
 //http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application?lq=1
