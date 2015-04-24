@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="left|top"
+
     android:padding="20dp">
 
     <TextView
@@ -14,7 +15,9 @@
         android:text="@string/sell_to_us_form_title"
         android:layout_gravity="center"
         android:id="@+id/sell_to_us_form_title"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

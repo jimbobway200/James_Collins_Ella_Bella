@@ -101,12 +101,9 @@
         android:layout_height="85dp"
         android:id="@+id/facebook_button"
         android:background="@drawable/facebook"
-        android:layout_below="@+id/facebook_text_view"
-        android:layout_toRightOf="@+id/instore_detail_text2"
-        android:layout_toEndOf="@+id/instore_detail_text2"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp" />
+        android:layout_above="@+id/instore_detail_text2"
+        android:layout_alignLeft="@+id/facebook_text_view"
+        android:layout_alignStart="@+id/facebook_text_view" />
 
     <TextView
         android:layout_width="wrap_content"

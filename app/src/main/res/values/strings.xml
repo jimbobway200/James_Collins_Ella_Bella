@@ -21,7 +21,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
+    <string name="music_player_button_text">Play/Pause Music</string>
 
     <string name="action_settings">Settings</string>
     <string name="sell_to_us_form_title">Sell to Ella Bella</string>

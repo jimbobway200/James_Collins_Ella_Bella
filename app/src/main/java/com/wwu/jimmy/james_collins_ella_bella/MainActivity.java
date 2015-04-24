@@ -1,6 +1,7 @@
 package com.wwu.jimmy.james_collins_ella_bella;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,9 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+
+    MediaPlayer player;
+    boolean playing = false;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -34,6 +38,12 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+//        player = MediaPlayer.create()
+
+        player = MediaPlayer.create(MainActivity.this, R.raw.song);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -117,6 +127,20 @@ public class MainActivity extends ActionBarActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id == R.id.music_player_button)
+        {
+            if (playing)
+            {
+                player.pause();
+                playing = false;
+            }
+            else
+            {
+                player.start();
+                playing = true;
+            }
+
         }
 
         return super.onOptionsItemSelected(item);
