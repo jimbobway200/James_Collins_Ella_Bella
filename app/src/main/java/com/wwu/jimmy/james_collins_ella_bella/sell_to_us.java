@@ -39,6 +39,7 @@ public class sell_to_us extends Fragment {
     View rootView;
     File file;
 
+
     public static sell_to_us newInstance() {
         sell_to_us fragment = new sell_to_us();
         return fragment;
@@ -50,7 +51,26 @@ public class sell_to_us extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-         rootView = inflater.inflate(R.layout.sell_to_us, container, false);
+        rootView = inflater.inflate(R.layout.sell_to_us, container, false);
+
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/req_images");
+        myDir.mkdirs();
+        String fname = "Ella-Bella-Temp-Photo.png";
+        file = new File(myDir, fname);
+        //Restore???
+        if (savedInstanceState != null)
+        {
+            EditText guest_name = (EditText) rootView.findViewById(R.id.guest_name_edit_text);
+            EditText guest_email = (EditText) rootView.findViewById(R.id.guest_email_edit_text);
+            EditText item_description = (EditText) rootView.findViewById(R.id.item_description);
+            EditText asking_price = (EditText) rootView.findViewById(R.id.asking_price);
+
+            guest_email.setText(savedInstanceState.getCharSequence("guest_email"));
+            guest_name.setText(savedInstanceState.getCharSequence("guest_name"));
+            item_description.setText(savedInstanceState.getCharSequence("item_description"));
+            item_description.setText(savedInstanceState.getCharSequence("item_description"));
+        }
 
         //Take a photo
         Button take_picture_button = (Button) rootView.findViewById(R.id.take_picture_button);
@@ -61,16 +81,13 @@ public class sell_to_us extends Fragment {
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
-                String root = Environment.getExternalStorageDirectory().toString();
-                File myDir = new File(root + "/req_images");
-                myDir.mkdirs();
-                String fname = "Ella-Bella-Temp-Photo.png";
-                file = new File(myDir, fname);
+//                String root = Environment.getExternalStorageDirectory().toString();
+//                File myDir = new File(root + "/req_images");
+//                myDir.mkdirs();
+//                String fname = "Ella-Bella-Temp-Photo.png";
+//                file = new File(myDir, fname);
                 if (file.exists())
                     file.delete();
-
-                //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-//
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
@@ -99,7 +116,6 @@ public class sell_to_us extends Fragment {
             }
         });
 
-
         return rootView;
     }
 
@@ -124,33 +140,26 @@ public class sell_to_us extends Fragment {
 
                 e.printStackTrace();
             }
-
-//            Bitmap photo = (Bitmap) data.getExtras().get("data");
-//            item_photo.setImageBitmap(photo);
-//            View content = rootView;
-//            content.setDrawingCacheEnabled(true);
-//            File file;
-//            String root = Environment.getExternalStorageDirectory().toString();
-//            File myDir = new File(root + "/req_images");
-//            myDir.mkdirs();
-//            String fname = "Ella-Bella-Temp-Photo.png";
-//            file = new File(myDir, fname);
-//
-//            if (file.exists())
-//                file.delete();
-//            try {
-//                FileOutputStream out = new FileOutputStream(file);
-//                photo.compress(Bitmap.CompressFormat.PNG, 100, out);
-//                out.flush();
-//                out.close();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        EditText guest_name = (EditText) rootView.findViewById(R.id.guest_name_edit_text);
+        EditText guest_email = (EditText) rootView.findViewById(R.id.guest_email_edit_text);
+        EditText item_description = (EditText) rootView.findViewById(R.id.item_description);
+        EditText asking_price = (EditText) rootView.findViewById(R.id.asking_price);
+        outState.putCharSequence("guest_name", guest_name.getText().toString());
+        outState.putCharSequence("guest_email", guest_email.getText().toString());
+        outState.putCharSequence("item_description", item_description.getText().toString());
+        outState.putCharSequence("asking_price", asking_price.getText().toString());
+        //choosing not to keep picture for security reasons
+        if (file.exists()){
+            file.delete();
+        }
 
+
+
+    }
 }
-
-//http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application?lq=1
-//http://www.javacodegeeks.com/2013/10/send-email-with-attachment-in-android.html

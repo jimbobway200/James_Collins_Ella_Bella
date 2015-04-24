@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#DEB887"
+    >
+
+
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/google_maps_button"
+        android:background="@drawable/google_maps"
+        android:layout_below="@+id/instore_detail_text2"
+        android:layout_alignLeft="@+id/instore_detail_text"
+        android:layout_alignStart="@+id/instore_detail_text"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/contact_us_intro"
+        android:id="@+id/intro_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="28dp"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_phone"
+        android:id="@+id/phone_text"
+        android:layout_below="@+id/intro_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_phone_detail"
+        android:id="@+id/phone_detail_text"
+        android:layout_alignTop="@+id/phone_text"
+        android:layout_toRightOf="@+id/instore_text"
+        android:layout_toEndOf="@+id/instore_text"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_email"
+        android:id="@+id/email_text"
+        android:layout_below="@+id/phone_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_email_detail"
+        android:id="@+id/email_text_detail"
+        android:layout_alignTop="@+id/email_text"
+        android:layout_alignLeft="@+id/phone_detail_text"
+        android:layout_alignStart="@+id/phone_detail_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_address"
+        android:id="@+id/instore_text"
+        android:layout_below="@+id/email_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_address_detail"
+        android:id="@+id/instore_detail_text"
+        android:layout_alignBottom="@+id/instore_text"
+        android:layout_alignLeft="@+id/email_text_detail"
+        android:layout_alignStart="@+id/email_text_detail" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_address_detail2"
+        android:id="@+id/instore_detail_text2"
+        android:layout_below="@+id/instore_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <ImageButton
+        android:layout_width="260dp"
+        android:layout_height="85dp"
+        android:id="@+id/facebook_button"
+        android:background="@drawable/facebook"
+        android:layout_below="@+id/facebook_text_view"
+        android:layout_toRightOf="@+id/instore_detail_text2"
+        android:layout_toEndOf="@+id/instore_detail_text2"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_us_facebook"
+        android:id="@+id/facebook_text_view"
+        android:layout_alignTop="@+id/phone_detail_text"
+        android:layout_alignRight="@+id/intro_text"
+        android:layout_alignEnd="@+id/intro_text"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp" />
+</RelativeLayout>
