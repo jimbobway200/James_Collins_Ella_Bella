@@ -22,119 +22,119 @@
         android:layout_below="@+id/sell_to_us_form_title"
         android:id="@+id/sell_to_us_detail"
         android:text="There are several ways to sell to us! Either come in to the store, shoot us a message on facebook, or fill out the form below!"
-        android:padding="20dp"/>
+        android:padding="20dp"
+        android:layout_toLeftOf="@+id/take_picture_button"
+        android:layout_toStartOf="@+id/take_picture_button" />
 
     <!--guest name-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        android:orientation="horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sell_to_us_form_title"
-            android:text="Your Name: "/>
+            android:layout_below="@+id/sell_to_us_detail"
+            android:id="@+id/guest_name"
+            android:text="Your Name: "
+            android:paddingTop="20dp" />
         <EditText
             android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:id="@+id/guest_name_edit_text"
+
             android:gravity="left"
             android:orientation="vertical"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
-    </LinearLayout>
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_alignBottom="@+id/guest_name"
+            android:layout_toRightOf="@+id/guest_name"
+            android:layout_toEndOf="@+id/guest_name" />
+
 
     <!--guest email-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-        android:orientation="horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Email: "/>
+            android:text="Your Email: "
+            android:layout_below="@+id/guest_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView"
+            android:paddingTop="20dp" />
         <EditText
             android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:id="@+id/guest_email_edit_text"
             android:gravity="left"
             android:orientation="vertical"
-            android:inputType="textEmailAddress"/>
-    </LinearLayout>
+            android:layout_alignBottom="@+id/textView"
+            android:layout_toRightOf="@+id/guest_name"
+            android:layout_toEndOf="@+id/guest_name" />
+
 
     <!--Item Description-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Item Description: "/>
+            android:text="Item Description: "
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView2"
+            android:paddingTop="20dp" />
 
         <EditText
             android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:id="@+id/item_description"/>
+            android:id="@+id/item_description"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2" />
 
-    </LinearLayout>
 
     <!--Asking Price-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Your Asking Price: "/>
+            android:text="Your Asking Price: "
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="20dp" />
 
         <EditText
             android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:id="@+id/asking_price"
-            />
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toRightOf="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3" />
 
-    </LinearLayout>
 
 
     <!--Take Picture-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Attach a photo: "/>
-
-        <!--Attach a picture-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Attach Picture"
-            android:id="@+id/take_picture_button"
-            android:layout_gravity="center_horizontal" />
 
 
-    </LinearLayout>
+    <!--Attach a picture-->
+
+
+
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/item_photo"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/submit_form"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <!--Attach a picture-->
     <Button
@@ -142,6 +142,19 @@
         android:layout_height="wrap_content"
         android:text="Submit to Ella Bella"
         android:id="@+id/submit_form"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attach Picture"
+        android:id="@+id/take_picture_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignTop="@+id/sell_to_us_detail"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

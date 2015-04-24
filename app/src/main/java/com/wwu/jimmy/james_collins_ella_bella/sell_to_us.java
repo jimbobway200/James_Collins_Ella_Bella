@@ -48,6 +48,12 @@ public class sell_to_us extends Fragment {
     public sell_to_us() {
     }
 
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -69,7 +75,7 @@ public class sell_to_us extends Fragment {
             guest_email.setText(savedInstanceState.getCharSequence("guest_email"));
             guest_name.setText(savedInstanceState.getCharSequence("guest_name"));
             item_description.setText(savedInstanceState.getCharSequence("item_description"));
-            item_description.setText(savedInstanceState.getCharSequence("item_description"));
+            asking_price.setText(savedInstanceState.getCharSequence("asking_price"));
         }
 
         //Take a photo
@@ -81,11 +87,11 @@ public class sell_to_us extends Fragment {
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
-//                String root = Environment.getExternalStorageDirectory().toString();
-//                File myDir = new File(root + "/req_images");
-//                myDir.mkdirs();
-//                String fname = "Ella-Bella-Temp-Photo.png";
-//                file = new File(myDir, fname);
+                String root = Environment.getExternalStorageDirectory().toString();
+                File myDir = new File(root + "/req_images");
+                myDir.mkdirs();
+                String fname = "Ella-Bella-Temp-Photo.png";
+                file = new File(myDir, fname);
                 if (file.exists())
                     file.delete();
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
@@ -154,10 +160,7 @@ public class sell_to_us extends Fragment {
         outState.putCharSequence("guest_email", guest_email.getText().toString());
         outState.putCharSequence("item_description", item_description.getText().toString());
         outState.putCharSequence("asking_price", asking_price.getText().toString());
-        //choosing not to keep picture for security reasons
-        if (file.exists()){
-            file.delete();
-        }
+
 
 
 
